@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  yaml-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - name: Validate workflow YAML
+        run: |
+          pip install --quiet yamllint
+          yamllint -d '{extends: default, rules: {line-length: disable, truthy: disable}}' .github/workflows/
+
+  zizmor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+      - name: Install zizmor
+        run: pip install --quiet zizmor
+      - name: Run zizmor
+        run: zizmor . --no-online-audits
