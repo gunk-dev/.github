@@ -1,0 +1,19 @@
+{
+  "id": "20260406-1701-453c",
+  "prompt": "CI is failing on PR #4. Diagnose the failures and push fixes. Check `gh pr checks 4` for details and `gh run view \u003crun-id\u003e --log-failed` for error output.",
+  "issue": null,
+  "pr": "4",
+  "branch": "agent/20260406-1700-af69",
+  "worktree": "/tmp/klaus-sessions/.github/20260406-1701-453c",
+  "tmux_pane": "%13",
+  "budget": "5.00",
+  "log_file": "/home/patrick/.klaus/sessions/session-20260406-1645-30f4/logs/20260406-1701-453c.jsonl",
+  "created_at": "2026-04-06T17:01:55-04:00",
+  "cost_usd": 0.1644605,
+  "duration_ms": 40823,
+  "pr_url": "https://github.com/gunk-dev/.github/pull/4",
+  "type": "pr-fix",
+  "target_repo": "gunk-dev/.github",
+  "clone_dir": "/tmp/klaus-sessions/.repos/gunk-dev/.github",
+  "session_name": "20260406-1701-453c"
+}
