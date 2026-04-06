@@ -1,0 +1,17 @@
+{
+  "id": "20260406-1700-af69",
+  "prompt": "Add a reusable workflow for dispatching deployment events to gunk-dev/infra.\n\n## Context\nThe gunk-dev org has multiple apps (flux, balance, gunk-web) that all need to dispatch repository_dispatch events to gunk-dev/infra for Fly.io deployments. Currently this logic is (or will be) copy-pasted in each repo. Extract it as a shared reusable workflow.\n\n## Existing shared workflows\nThe repo already has reusable workflows at .github/workflows/:\n- nix-lint.yml (workflow_call, does nixfmt + flake check)\n- nix-build.yml (workflow_call, builds a flake output)\n- zizmor.yml (workflow_call, runs zizmor security audit)\n\nNOTE: The .github repo is currently private and reusable workflow sharing failed for flux (see flux PR #50 commits). You may need to check org settings, but for now just create the workflow — the sharing issue is separate.\n\n## What to create\n\n### .github/workflows/infra-dispatch.yml\n\nA reusable workflow (workflow_call) that dispatches a repository_dispatch event to gunk-dev/infra.\n\nInputs:\n- `event-type` (required, string) — e.g. 'flux-preview', 'balance-staging', 'flux-preview-cleanup'\n- `payload` (required, string) — JSON string for client_payload\n\nSecrets:\n- `infra-dispatch-token` (required) — PAT with repo scope on gunk-dev/infra\n\nThe workflow should:\n1. Use actions/github-script (pinned to SHA) to call repos.createDispatchEvent\n2. Target owner: 'gunk-dev', repo: 'infra'\n3. Pass event_type from input, client_payload parsed from the payload input string\n4. Use environment variables (not inline expressions) for the payload to prevent template injection\n\nKeep it simple — one job, one step. Pin all action SHAs. Add persist-credentials: false on checkout if needed (though this workflow may not need checkout at all).\n\n## Acceptance criteria\n- Workflow is callable with: uses: gunk-dev/.github/.github/workflows/infra-dispatch.yml@main\n- Inputs are validated (event-type and payload are required)\n- No template injection vectors (payload passed via env, not inline)\n- Existing CI in the .github repo passes",
+  "issue": null,
+  "branch": "agent/20260406-1700-af69",
+  "worktree": "/tmp/klaus-sessions/.github/20260406-1700-af69",
+  "tmux_pane": "%8",
+  "budget": "5.00",
+  "log_file": "/home/patrick/.klaus/sessions/session-20260406-1645-30f4/logs/20260406-1700-af69.jsonl",
+  "created_at": "2026-04-06T17:00:11-04:00",
+  "cost_usd": 0.42919549999999995,
+  "duration_ms": 88303,
+  "pr_url": "https://github.com/gunk-dev/.github/pull/4",
+  "target_repo": "gunk-dev/.github",
+  "clone_dir": "/tmp/klaus-sessions/.repos/gunk-dev/.github",
+  "session_name": "20260406-1700-af69"
+}
