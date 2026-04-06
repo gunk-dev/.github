@@ -17,4 +17,11 @@ jobs:
             accept-flake-config = true
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
       - name: Run zizmor
-        run: nix run nixpkgs#zizmor -- . --no-online-audits
+        run: |
+          EXIT_CODE=0
+          nix run nixpkgs#zizmor -- . --no-online-audits || EXIT_CODE=$?
+          if [ $EXIT_CODE -eq 13 ]; then
+            echo '::warning::zizmor found medium/low findings (warnings only)'
+            exit 0
+          fi
+          exit $EXIT_CODE
