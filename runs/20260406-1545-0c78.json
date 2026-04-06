@@ -1,0 +1,17 @@
+{
+  "id": "20260406-1545-0c78",
+  "prompt": "Update the zizmor reusable workflow to only fail on errors, not warnings.\n\nIn .github/workflows/zizmor.yml, zizmor exits with code 13 for warnings and 14 for errors. Currently the workflow fails on both. We should only fail on errors (exit 14+) since medium warnings like secrets-outside-env are acceptable for org-level secrets.\n\nChange the zizmor run step to tolerate exit code 13:\n\nInstead of just running zizmor directly, wrap it:\n```yaml\n- name: Run zizmor\n  run: |\n    EXIT_CODE=0\n    nix run nixpkgs#zizmor -- . --no-online-audits || EXIT_CODE=$?\n    if [ $EXIT_CODE -eq 13 ]; then\n      echo '::warning::zizmor found medium/low findings (warnings only)'\n      exit 0\n    fi\n    exit $EXIT_CODE\n```\n\nThis way exit 0 (clean) and 13 (warnings only) pass, but exit 14 (errors) still fails the workflow.\n\nKeep everything else the same — pinned action SHAs, permissions, persist-credentials.",
+  "issue": null,
+  "branch": "agent/20260406-1545-0c78",
+  "worktree": "/tmp/klaus-sessions/.github/20260406-1545-0c78",
+  "tmux_pane": "%29",
+  "budget": "5.00",
+  "log_file": "/home/patrick/.klaus/sessions/session-20260406-0902-986c/logs/20260406-1545-0c78.jsonl",
+  "created_at": "2026-04-06T15:45:22-04:00",
+  "cost_usd": 0.16748449999999998,
+  "duration_ms": 37381,
+  "pr_url": "https://github.com/gunk-dev/.github/pull/2",
+  "target_repo": "gunk-dev/.github",
+  "clone_dir": "/tmp/klaus-sessions/.repos/gunk-dev/.github",
+  "session_name": "20260406-1545-0c78"
+}
