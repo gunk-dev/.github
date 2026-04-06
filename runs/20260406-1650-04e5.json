@@ -1,0 +1,17 @@
+{
+  "id": "20260406-1650-04e5",
+  "prompt": "Update the organization profile README at profile/README.md to serve as the main page for the gunk-dev GitHub organization.\n\n## Current state\nThe file profile/README.md exists but only contains: 'Infrastructure and tooling for gunk-dev projects.'\n\n## What to write\n\nCreate a clean, well-structured org profile README that:\n\n### 1. Header / intro\nBrief introduction to gunk-dev as an organization building tools for personal use that respect the user.\n\n### 2. Principles section\nPresent these three core principles clearly (use a heading or styled list):\n- **User First** — software should serve the person using it, not monetize them\n- **Data Sovereignty** — your data stays yours; local-first, no telemetry, no lock-in\n- **Public Source \u0026 Reproducible Builds** — all code is open; builds are reproducible so you can verify what you run\n\n### 3. Projects section\nList the public repos with a short blurb for each:\n\n- **[flux](https://github.com/gunk-dev/flux)** — Mobile-first PWA for tracking and executing fitness goals. Workout programs loaded from JSON, weight logging per exercise, and YouTube video embeds for form checks.\n- **[balance](https://github.com/gunk-dev/balance)** — Personal health and wellness tracker. Quick tap-to-record interface for 12 metrics (mood, stress, energy, etc.) with offline-first persistence.\n- **[reel-life](https://github.com/gunk-dev/reel-life)** — AI-powered chatops for home media servers. Connects Claude to the *arr stack (Sonarr, Radarr, Prowlarr, Overseerr) via Telegram or Google Chat.\n- **[vibe](https://github.com/gunk-dev/vibe)** — Ultra-simple, free meditation app for Android. Minimalist timer, meditation bells, no ads or tracking.\n\n### Style guidelines\n- Keep it concise and understated — no marketing speak, no emojis\n- Use clean markdown that renders well on GitHub\n- Don't include badges, shields, or images\n- Don't add a license section or contributing guide — this is just the org overview",
+  "issue": null,
+  "branch": "agent/20260406-1650-04e5",
+  "worktree": "/tmp/klaus-sessions/.github/20260406-1650-04e5",
+  "tmux_pane": "%4",
+  "budget": "5.00",
+  "log_file": "/home/patrick/.klaus/sessions/session-20260406-1645-30f4/logs/20260406-1650-04e5.jsonl",
+  "created_at": "2026-04-06T16:50:19-04:00",
+  "cost_usd": 0.19340649999999998,
+  "duration_ms": 35516,
+  "pr_url": "https://github.com/gunk-dev/.github/pull/3",
+  "target_repo": "gunk-dev/.github",
+  "clone_dir": "/tmp/klaus-sessions/.repos/gunk-dev/.github",
+  "session_name": "20260406-1650-04e5"
+}
